@@ -99,6 +99,8 @@ export default class SearchBox extends React.Component {
 			bst.insert(arr[i], arr[i]);
 		}
         console.log(...this.inOrder(bst));
+        console.log(...this.preOrder(bst));
+        console.log(...this.postOrder(bst));
 	}
 	// left, root, right
 	inOrder(bst) {
@@ -114,11 +116,27 @@ export default class SearchBox extends React.Component {
 	}
 	// root, left, right
 	preOrder(bst) {
-
+        if(bst.left && bst.right) {
+            return [bst.key, ...this.preOrder(bst.left), ...this.preOrder(bst.right)];
+        } else if(bst.left) {
+            return [bst.key, ...this.preOrder(bst.left)];
+        } else if(bst.right) {
+            return [bst.key, ...this.preOrder(bst.right)];
+        } else {
+            return [bst.key];
+        }
 	}
 	// left, right, root
 	postOrder(bst) {
-
+        if(bst.left && bst.right) {
+            return [...this.postOrder(bst.left), ...this.postOrder(bst.right), bst.key];
+        } else if(bst.left) {
+            return [...this.postOrder(bst.left), bst.key];
+        } else if(bst.right) {
+            return [...this.postOrder(bst.right), bst.key];
+        } else {
+            return [bst.key];
+        }
 	}
 
 	render() {
