@@ -134,13 +134,11 @@ export default class BinarySearchTree {
 
 	_replaceWith(node) {
 		if(this.parent) {
-			// connect passed in node to the parent of this
 			if(this === this.parent.left) {
 				this.parent.left = node;
 			} else if(this === this.parent.right) {
 				this.parent.right = node;
 			}
-			// set up passed in node to have the correct parent
 			if(node) {
 				node.parent = this.parent;
 			}
@@ -167,133 +165,3 @@ export default class BinarySearchTree {
 	}
 }
 
-// function main() {
-// 	let bst = new BinarySearchTree();
-
-// 	bst.insert(3, "value");
-// 	bst.insert(1, "value1");
-// 	bst.insert(4, "value2");
-// 	bst.insert(6, "value3");
-// 	bst.insert(9, "value4");
-// 	bst.insert(2, "value5");
-// 	bst.insert(5, "value6");
-// 	bst.insert(7, "value7");
-
-// 	bst.remove(7);
-// 	// console.log(bst.find(7));
-// 	bst.insert(7, "value7");
-// 	/*
-//     3
-//    / \
-//   1   4
-//    \   \
-//     2   6
-//        / \
-//       5   9
-//          /
-//         7
-// height = 5
-// */
-// 	console.log(bst.printKeys());
-// 	console.log(bst.height());
-	
-// 	console.log(isBst(bst));
-// 	console.log(thirdLargest(bst));
-
-// 	console.log(bst.isBalanced());
-// 	let temp = new BinarySearchTree();
-// 	/*
-//     4
-//    / \
-//   2   5
-//  / \   \
-// 1   3   6
-// 	*/
-// 	temp.insert(3, "value");
-// 	temp.insert(2, "value1");
-// 	temp.insert(4, "value2");
-// 	temp.insert(6, "value3");
-// 	temp.insert(1, "value4");
-// 	temp.insert(3, "value5");
-// 	// should be true
-// 	console.log(temp.isBalanced());
-// }
-
-// function isBst(list) {
-// 	if(list.left && list.right) {
-// 		if(list.left.key < list.key && list.right.key > list.key) {
-// 			return isBst(list.left) && isBst(list.right);
-// 		} else {
-// 			return false;
-// 		}
-// 	} else if(list.left) {
-// 		if(list.left.key < list.key) {
-// 			return isBst(list.left);
-// 		} else {
-// 			return false;
-// 		}
-// 	} else if(list.right) {
-// 		if(list.right.key > list.key) {
-// 			return isBst(list.right.key);
-// 		} else {
-// 			return false;
-// 		}
-// 	}
-// 	return (list !== null);
-// }
-
-// function thirdLargest(list, max=[]) {
-// 	if(max.length < 3) {
-// 		if(max.length === 0) {
-// 			max.push(list.key);
-// 		} else if(max.length === 1) {
-// 			if(max[0] < list.key) {
-// 				max.push(max[0]);
-// 				max[0] = list.key;
-// 			} else {
-// 				max.push(list.key);
-// 			}
-// 		} else if(max.length === 2) {
-// 			if(max[0] < list.key) {
-// 				max.push(max[1]);
-// 				max[1] = max[0];
-// 				max[0] = list.key;
-// 			} else if(max[1] < list.key) {
-// 				max.push(max[1]);
-// 				max[1] = list.key;
-// 			} else {
-// 				max.push(list.key);
-// 			}
-// 		}
-		
-// 	} else {
-// 		if(max[2] < list.key) {
-// 			if(max[1] < list.key) {
-// 				if(max[0] < list.key) {
-// 					max[2] = max[1];
-// 					max[1] = max[0];
-// 					max[0] = list.key;
-// 				} else {
-// 					max[2] = max[1];
-// 					max[1] = list.key;
-// 				}
-// 			} else {
-// 				max[2] = list.key;
-// 			}
-// 		}
-// 	}
-// 	if(list.left && list.right) {
-// 		thirdLargest(list.left, max);
-// 		thirdLargest(list.right, max);
-// 	} else if(list.left) {
-// 		thirdLargest(list.left, max);
-// 	} else if(list.right) {
-// 		thirdLargest(list.right, max);
-// 	}
-// 	if(max.length === 3) {
-// 		return max[2];
-// 	}
-// 	return null;
-// }
-
-// main();

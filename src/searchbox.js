@@ -58,7 +58,7 @@ export default class SearchBox extends React.Component {
 				});
 			} else if(item < temp) {
 				return this.binarySearch(item, start, index-1, count);
-			} else {	// all that is left is item > temp
+			} else {	
 				return this.binarySearch(item, index+1, end, count);
 			}
 		}
